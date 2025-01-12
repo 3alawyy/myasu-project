@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    form{
+        width: 400px;
+        height: 300px;
+        margin-left: 35%;
+        margin-top: 15%;
+        background-color: rgb(172, 228, 236);
+        border: solid 3px;
+        border-color: rgb(140, 187, 245);
+        padding: 0;
+       
+    }
+    body{
+    background:  url(czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcm0yMjJiYXRjaDUta3VsLTAzLmpwZw.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+</style>
+<body>
+    <form>
+        <div>
+            <br>
+            <br>
+            <label style="color: rgb(0, 0, 0);  font-weight: bold; padding:10px 20px;margin:10px ;" >Name : </label>
+        <input type="text" required placeholder="username" style="margin-left: 20px ; font-weight: bold; padding:10px 20px;margin:10px ;">
+        </div>
+        <br>
+        <br>
+        <div><label style="color: rgb(0, 0, 0);  font-weight: bold;padding:10px 20px; margin: 2px;">Password : </label>
+            <input type="password" required placeholder="password" style=" font-weight: bold;padding:10px 20px ;" >
+        </div>
+        <br>
+        <br>
+        <input type="submit" value="log in" style=" font-weight: bold;margin-left: 150px;background-color: white;font-size: larger;">
+    
+      </form>
+      <script>
+        function updateDateTime() {
+          const now = new Date();
+          const formattedDateTime = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+          document.getElementById('dateTimeDisplay').innerText = formattedDateTime;
+        }
+    
+        // Update the time every second
+        setInterval(updateDateTime, 1000);
+    
+        // Initial call to display immediately
+        updateDateTime();
+      </script>
+</body>
+</html>

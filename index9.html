@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Resources Form</title>
+    <link rel="stylesheet" href="stylejs.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .error { color: red; }
+        .valid { border-color: green; }
+        .invalid { border-color: red; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Natural Resources</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#formSection">Form</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Form Section -->
+    <section id="formSection" class="container mt-5">
+        <h2>Natural Resources Submission</h2>
+        <p id="currentDateTime" class="text-muted"></p>
+
+        <form id="resourceForm" onsubmit="return validateForm(event)">
+            <div class="mb-3">
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                <span id="nameError" class="error"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                <span id="emailError" class="error"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="resourceType" class="form-label">Resource Type</label>
+                <select class="form-control" id="resourceType">
+                    <option value="">Select Resource Type</option>
+                    <option value="Water">Water</option>
+                    <option value="Minerals">Minerals</option>
+                    <option value="Forests">Forests</option>
+                    <option value="Wildlife">Wildlife</option>
+                </select>
+                <span id="resourceTypeError" class="error"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="quantity" class="form-label">Quantity</label>
+                <input type="number" step="0.01" class="form-control" id="quantity" placeholder="Enter quantity (e.g., tons, cubic meters)">
+                <span id="quantityError" class="error"></span>
+            </div>
+            
+
+            <div class="mb-3">
+                <label for="region" class="form-label">Region</label>
+                <input type="text" class="form-control" id="region" placeholder="Enter region of the resource">
+                <span id="regionError" class="error"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="status" class="form-label">Conservation Status</label>
+                <select class="form-control" id="status">
+                    <option value="">Select Conservation Status</option>
+                    <option value="Endangered">Endangered</option>
+                    <option value="Protected">Protected</option>
+                    <option value="Exploited">Exploited</option>
+                </select>
+                <span id="statusError" class="error"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <!-- Display Section -->
+        <div id="displaySection" class="mt-5" style="display: none;">
+            <h3>Submitted Information</h3>
+            <p><strong>Name:</strong> <span id="displayName"></span></p>
+            <p><strong>Email:</strong> <span id="displayEmail"></span></p>
+            <p><strong>Resource Type:</strong> <span id="displayResourceType"></span></p>
+            <p><strong>Quantity:</strong> <span id="displayQuantity"></span></p>
+            <p><strong>Region:</strong> <span id="displayRegion"></span></p>
+            <p><strong>Conservation Status:</strong> <span id="displayStatus"></span></p>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS and Custom JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Function to display current date and time
+        function displayDateTime() {
+            const now = new Date();
+            document.getElementById('currentDateTime').textContent = now.toLocaleString();
+        }
+
+        // Run the displayDateTime function
+        displayDateTime();
+        setInterval(displayDateTime, 1000); // Update every second
+
+        // JavaScript form validation function
+        function validateForm(event) {
+            event.preventDefault(); // Prevent form submission
+            let valid = true;
+
+            // Clear previous error messages
+            document.querySelectorAll('.error').forEach(e => e.textContent = '');
+            document.querySelectorAll('.form-control').forEach(e => e.classList.remove('valid', 'invalid'));
+
+            // Name validation
+            const name = document.getElementById('name').value;
+            if (name === "") {
+                valid = false;
+                document.getElementById('nameError').textContent = "Name cannot be empty";
+                document.getElementById('name').classList.add('invalid');
+            } else {
+                document.getElementById('name').classList.add('valid');
+            }
+
+            // Email validation
+            const email = document.getElementById('email').value;
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            if (!email.match(emailRegex)) {
+                valid = false;
+                document.getElementById('emailError').textContent = "Invalid email format";
+                document.getElementById('email').classList.add('invalid');
+            } else {
+                document.getElementById('email').classList.add('valid');
+            }
+
+            // Resource Type validation
+            const resourceType = document.getElementById('resourceType').value;
+            if (resourceType === "") {
+                valid = false;
+                document.getElementById('resourceTypeError').textContent = "Please select a resource type";
+                document.getElementById('resourceType').classList.add('invalid');
+            } else {
+                document.getElementById('resourceType').classList.add('valid');
+            }
+
+            // Quantity validation
+            const quantity = document.getElementById('quantity').value;
+            if (quantity <= 0) {
+                valid = false;
+                document.getElementById('quantityError').textContent = "Quantity must be greater than 0";
+                document.getElementById('quantity').classList.add('invalid');
+            } else {
+                document.getElementById('quantity').classList.add('valid');
+            }
+
+            // Region validation
+            const region = document.getElementById('region').value;
+            if (region === "") {
+                valid = false;
+                document.getElementById('regionError').textContent = "Region cannot be empty";
+                document.getElementById('region').classList.add('invalid');
+            } else {
+                document.getElementById('region').classList.add('valid');
+            }
+
+            // Conservation Status validation
+            const status = document.getElementById('status').value;
+            if (status === "") {
+                valid = false;
+                document.getElementById('statusError').textContent = "Please select a conservation status";
+                document.getElementById('status').classList.add('invalid');
+            } else {
+                document.getElementById('status').classList.add('valid');
+            }
+
+            // If form is valid, display the information on the page
+            if (valid) {
+                document.getElementById('displayName').textContent = name;
+                document.getElementById('displayEmail').textContent = email;
+                document.getElementById('displayResourceType').textContent = resourceType;
+                document.getElementById('displayQuantity').textContent = quantity;
+                document.getElementById('displayRegion').textContent = region;
+                document.getElementById('displayStatus').textContent = status;
+                document.getElementById('displaySection').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

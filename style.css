@@ -1,0 +1,108 @@
+
+body{
+    background:  url(czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcm0yMjJiYXRjaDUta3VsLTAzLmpwZw.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+.heade{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    background-color: rgb(18, 94, 130);
+    padding: 10px 100px;
+    display: flex;
+    box-sizing: border-box;
+    text-align: center;
+    justify-content: space-between;
+}
+.logo{
+    font-size: 32px;
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+}
+.links{
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+}
+h2{
+    
+    margin-left: 480px;
+    width: 400px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    border: solid 6px;
+    border-color: rgb(37, 133, 228);
+    background-color: rgb(18, 94, 130);
+    text-align: center;
+    padding: 10px;
+}
+.img1{
+    margin-left: 485px;
+    margin-top: 10px;
+    width: 420px;
+ 
+}
+.nam{
+    margin-left: 480px;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    border: solid 6px;
+    border-color: rgb(37, 133, 228);
+    background-color:rgb(18, 94, 130);
+    width: 390px;
+   
+}
+.na{
+    margin-left: 350px;
+    font-size: 20px;
+    margin-top: 10px;
+    padding-left: 10px;
+    border-left: solid ;
+    border-color: rgb(241, 170, 89) ;
+    width: 600px;
+    color:rgb(47, 107, 10);
+
+
+}
+.d1{
+
+    margin-top: 10px;
+    margin-left: 480px;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    border: solid 6px;
+    border-color: rgb(37, 133, 228);
+    background-color:rgb(18, 94, 130);
+    width: 390px;
+}
+.list1{
+    margin: 10px;
+    margin-left: 350px;
+    border-left: solid ;
+    border-color: rgb(241, 170, 89) ;
+    color:rgb(47, 107, 10);
+    font-size: large;
+    margin-bottom: 50px;
+}
+.table,td,th{
+    color: white;
+    background-color:rgb(18, 94, 130);
+    padding: 10px;
+    width: fit-content;
+    margin: 20px;
+    border: 5px solid;
+    border-color: rgb(37, 133, 228);
+    border-collapse:collapse ;
+    font-size:large;
+    font-weight: bold;
+    margin-left: 200px;
+}
